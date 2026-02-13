@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mwah</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&family=Cormorant+Garamond:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --rose: #a85c63;
+  --rose-deep: #8e454c;
+  --ivory: #f8f3ef;
+  --wine: #7a2f35;
+  --sage: #9aa79c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--ivory);
+  color: var(--wine);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ================= COVER PAGE ================= */
+
+.cover {
+  position: fixed;
+  inset: 0;
+  background: var(--rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-align: center;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+.cover.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.cover-inner h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: var(--ivory);
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.cover-script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: var(--ivory);
+  opacity: 0.9;
+  margin-bottom: 80px;
+}
+
+.open-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.open-btn {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--ivory);
+  background: radial-gradient(circle at 30% 30%, #b96b72, #8e454c);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.2),
+    inset 0 10px 20px rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+.open-btn:hover {
+  transform: scale(1.05);
+}
+
+.open-shadow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  bottom: -15px;
+  right: 30px;
+  filter: blur(4px);
+  opacity: 0.4;
+}
+
+/* ================= MAIN SITE ================= */
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+.serif-italic {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.4rem;
+  color: var(--sage);
+}
+
+.section {
+  padding: 100px 8%;
+  position: relative;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--wine);
+  margin: 30px auto;
+  opacity: 0.3;
+}
+
+/* Hero */
+
+.hero {
+  background: var(--rose);
+  color: var(--ivory);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin-left: 8%;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 2s ease forwards;
+  opacity: 0;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-weight: 300;
+}
+
+.floral {
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 500px;
+  opacity: 0.25;
+  transition: transform 20s ease;
+}
+
+.hero:hover .floral {
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Love Letter */
+
+.paper-card {
+  background: var(--ivory);
+  padding: 60px;
+  max-width: 800px;
+  margin: auto;
+  border: 1px solid rgba(122,47,53,0.15);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+.paper-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signature {
+  margin-top: 40px;
+  text-align: right;
+  font-style: italic;
+}
+
+/* Why I Love You */
+
+.love-list {
+  max-width: 700px;
+  margin: auto;
+}
+
+.love-item {
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(122,47,53,0.15);
+  font-weight: 300;
+}
+
+/* Memory */
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.memory-item {
+  border: 10px solid var(--ivory);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.6s ease;
+  background: white;
+}
+
+.memory-item img {
+  width: 100%;
+  display: block;
+  transition: transform 1s ease;
+}
+
+.memory-item:hover img {
+  transform: scale(1.05);
+}
+
+.caption {
+  padding: 15px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* Final */
+
+.final {
+  background: var(--rose);
+  text-align: center;
+  color: var(--ivory);
+}
+
+.final h2 {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+}
+
+button {
+  padding: 12px 35px;
+  margin: 10px;
+  border: 1px solid var(--ivory);
+  background: transparent;
+  color: var(--ivory);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.6s ease;
+}
+
+button:hover {
+  background: var(--ivory);
+  color: var(--rose);
+}
+
+/* Petals */
+
+.petal {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+/* Fade on scroll */
+
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.5s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@media(max-width: 900px) {
+  .floral { display: none; }
+  .hero-content { margin: auto; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover" id="cover">
+  <div class="cover-inner">
+    <h1>For you<3</h1>
+    <div class="cover-script">Yours, Vivi.</div>
+
+    <div class="open-wrapper">
+      <button class="open-btn" onclick="openLetter()">Open</button>
+      <div class="open-shadow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="floral" src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=800&q=80">
+  <div class="hero-content">
+    <h1>Happy Valentine's Day, Angel</h1>
+    <div class="script">I love you so much.</div>
+    <p>I want nothing more than to sink into your arms and for you to sink into mine, yet somehow you’ve found a way to make me feel that exact same thing from miles away.
+    Happy Valentine's Day Baby.
+    You are very special to me.
+    </p>
+  </div>
+</section>
+
+<!-- LOVE LETTER -->
+<section class="section fade">
+  <div class="paper-card">
+    <h2>A Love Letter To The Most Beautiful Woman</h2>
+    <div class="divider"></div>
+    <p>
+    I used to think that not knowing how to begin when I wanted to write to you was a bad thing. My fingers would hover over my keyboard, searching for the first words, the first line of the poem I wanted to give you, thinking, “How do I start?”
+    </p>
+    <p>I could list a thousand things, your warmth, your laughter, the vast beauty of your mind and heart, but even that would only scratch the surface.
+    </p>
+    <p>I could try to label these things as “reasons why I love you,” but even that would feel incomplete. Something would always be missing.
+    </p>
+    <p>
+    Because the way I feel about you lives in a language only my soul knows. There isn’t a phrase, a sentence, or even a dictionary entry that could explain it fully. Why I love you is a feeling too deep for words. And yet, I love you, not just for reasons I can name, but simply because I just do.</p>
+   
+  <p>I could spend every day trying to put it all into words, and still fall short. But even in silence, even when I cannot articulate the depth of it, know that my love for you is infinite and wholly yours.
+    </p>
+    <div class="signature">Forever yours, Vivi.</div>
+  </div>
+</section>
+
+<!-- WHY I LOVE YOU -->
+<section class="section fade">
+  <h2 style="text-align:center;">Things I Cannot Wait For With You</h2>
+  <div class="divider"></div>
+  <div class="love-list">
+    <div class="love-item">falling asleep with your warmth beside me.</div>
+    <div class="love-item">sharing a quiet night under a sky heavy with stars.</div>
+    <div class="love-item">dancing in the kitchen in our pajamas.</div>
+    <div class="love-item">going for a long drive.</div>
+        <div class="love-item">falling asleep with your head on my chest, feeling your heartbeat, and knowing that in every tomorrow, valentine’s or not, i get to love you more..</div>
+    
+  </div>
+</section>
+
+<!-- MEMORY -->
+<section class="section fade">
+  <h2 style="text-align:center;">Here's More</h2>
+  <div class="divider"></div>
+
+  <div class="memory-grid">
+    <div class="memory-item">
+      <img src=chocolate.jpg>
+      <div class="caption">One of the things I wish I could give you today.:(</div>
+    </div>
+
+    <div class="memory-item">
+      <img src="gifts.jpg">
+      <div class="caption">Spoiling you like this would heal me.</div>
+    </div>
+    
+    <div class="memory-item">
+      <img src="plushies.jpg">
+      <div class="caption">Or like this.</div>
+    </div>
+  
+  <div class="memory-item">
+      <img src="flowers.jpg">
+      <div class="caption">I really, really, really want to get you flowers today. HUGE need.</div>
+    </div>
+    <div class="memory-item">
+      <img src="Bunny.jpg">
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="section final">
+  <h2>Will you be my Valentine, Baby?</h2>
+  <button onclick="sayYes()">Yes</button>
+  <button>Yes</button>
+</section>
+
+<script>
+// Open Cover
+function openLetter() {
+  document.getElementById('cover').classList.add('hidden');
+}
+
+// Fade on scroll
+const faders = document.querySelectorAll('.fade');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+faders.forEach(el => observer.observe(el));
+
+// YES petals
+function sayYes() {
+  document.querySelector('.final').style.background = '#8e454c';
+  for(let i=0;i<25;i++){
+    let petal = document.createElement('div');
+    petal.classList.add('petal');
+    petal.style.left = Math.random()*100 + 'vw';
+    petal.style.animationDuration = (5 + Math.random()*5) + 's';
+    document.body.appendChild(petal);
+    setTimeout(()=> petal.remove(), 10000);
+  }
+}
+</script>
+
+</body>
+</html>
